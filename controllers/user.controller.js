@@ -49,6 +49,8 @@ exports.LoginUser = asyncHandler(async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production"
     })
+    console.log(result)
+
     res.json({
         message: "User Login Success", result: {
             _id: result._id,

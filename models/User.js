@@ -10,7 +10,7 @@ const authSchema = mongoose.Schema({
     mobile: { type: String, },
     active: { type: Boolean, default: true },
     otp: { type: String },
-    role: { type: String }
+    role: { type: String, default: "user" }
 
 })
 module.exports = mongoose.model("user", authSchema)
