@@ -5,7 +5,7 @@ const router = require("express").Router()
 router
     .post("/register-admin", authController.RegisterAdmin)
     .post("/login-admin", authController.LoginAdmin)
-    .post("/admin-otp", authController.VerifyOTP)
+    .post("/verifyAdminOTP", authController.VerifyOTP)
     .post("/logout-admin", authController.LogoutAdmin)
 
 module.exports = router

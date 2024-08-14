@@ -10,9 +10,15 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.static("dist"))
-app.use(cors())
+app.use(cors(
+    {
+        origin: true,
+        credentials: true
+    }
+))
 
 app.use("/api/auth", require("./routes/auth.routes"))
+app.use("/api/bus", require("./routes/bus.routes"))
 
 app.use("*", (req, res) => {
     res.status(404).json({ message: "Resource Not Found" })
