@@ -3,6 +3,7 @@ const { checkEmpty } = require("../utils/checkEmpty")
 const User = require("../models/User")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
+// const JWT = require("jsonwebtoken")
 const asyncHandler = require("express-async-handler")
 
 
@@ -19,7 +20,7 @@ exports.RegisterUser = asyncHandler(async (req, res) => {
     if (!validator.isEmail) { return res.status(400).json({ message: "Invalid Email", }) }
     if (!validator.isMobilePhone(mobile, "en-IN")) { return res.status(400).json({ message: "Inalid Mobile" }) }
     if (!validator.isStrongPassword(password)) { return res.status(400).json({ message: "Provide Strong Password " }) }
-    // if (password !== cpassword) { { return res.status(400).json({ message: "Password Do not Match" }) } }
+    if (password !== cpassword) { { return res.status(400).json({ message: "Password Do not Match" }) } }
     const result = await User.findOne({ email })
     if (result) {
         return res.status(400).json({ message: "Email Already Registered with Us.!" })
@@ -40,15 +41,15 @@ exports.LoginUser = asyncHandler(async (req, res) => {
     if (!verify) {
         return res.status(401).json({ message: "Password Do not Match" })
     }
-    //jWT
-    const Token = JWT.sign({ userId: result._id }, process.env.JWT_KEY, { expiresIn: "180d" })
-    //Cookie
-    res.cookie("user", Token, {
-        maxAge: 1000 * 60 * 60 * 24 * 180,
-        // maxAge: 15552000000,
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production"
-    })
+    // JWT
+    // const Token = JWT.sign({ userId: result._id }, process.env.JWT_KEY, { expiresIn: "180d" })
+    // Cookie
+    // res.cookie("user", Token, {
+    //     maxAge: 1000 * 60 * 60 * 24 * 180,
+    //     // maxAge: 15552000000,
+    //     httpOnly: true,
+    //     secure: process.env.NODE_ENV === "production"
+    // })
     console.log(result)
 
     res.json({
@@ -64,7 +65,7 @@ exports.LoginUser = asyncHandler(async (req, res) => {
     })
 })
 
-exports.LogoutUser = asyncHandler(async (req, res) => {
-    res.clearCookie("user")
-    res.json({ message: "User Logout Success" })
-})
+// exports.LogoutUser = asyncHandler(async (req, res) => {
+//     res.clearCookie("user")
+//     res.json({ message: "User Logout Success" })
+// })
