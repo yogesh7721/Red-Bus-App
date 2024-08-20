@@ -28,7 +28,7 @@ exports.RegisterAdmin = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: "Email Already registered with us" })
     }
     const hash = await bcrypt.hash(password, 10)
-    await Auth.create({ name, email, password: hash })
+    await Auth.create({ name, email, password: hash, mobile })
     res.json({ message: "Admin Register Success" })
 })
 exports.LoginAdmin = asyncHandler(async (req, res) => {
@@ -56,6 +56,7 @@ exports.LoginAdmin = asyncHandler(async (req, res) => {
         to: email, subject: `Login OTP`, message: `<h1>Do Not share Your Account OTP</h1>
         <p>Your Login OTP <strong>${otp}</strong> </p>`
     })
+
     res.json({
         message: "Credentials Verify Success. OTP send to your registered Email", result: {
             _id: isFound._id,

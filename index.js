@@ -13,7 +13,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "dist")))
 app.use(cors(
     {
-        origin: "https://red-bus-app.onrender.com",
+        origin:
+            // "https://red-bus-app.onrender.com",
+            "http://localhost:5173",
         credentials: true
     }
 ))
