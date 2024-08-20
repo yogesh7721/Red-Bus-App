@@ -8,4 +8,4 @@ router
 // .post("/user-otp", userConroller.VerifyOTPUser)
 // .post("/logout-user", userConroller.LogoutAdmin)
 
-module.exports = router
+module.exports = router             
