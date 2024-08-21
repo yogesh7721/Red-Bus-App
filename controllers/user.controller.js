@@ -12,13 +12,13 @@ const asyncHandler = require("express-async-handler")
 exports.RegisterUser = asyncHandler(async (req, res) => {
     const { name, mobile, email, password, cpassword } = req.body
     const { isError, error } = checkEmpty({
-        name, email, password, cpassword
+        name, mobile, email, password, cpassword
     })
     if (isError) {
         return res.status(400).json({ message: "All Fields required", error })
     }
     if (!validator.isEmail) { return res.status(400).json({ message: "Invalid Email", }) }
-    // if (!validator.isMobilePhone(mobile, "en-IN")) { return res.status(400).json({ message: "Inalid Mobile" }) }
+    if (!validator.isMobilePhone(mobile, "en-IN")) { return res.status(400).json({ message: "Inalid Mobile" }) }
     if (!validator.isStrongPassword(password)) { return res.status(400).json({ message: "Provide Strong Password " }) }
     if (password !== cpassword) { { return res.status(400).json({ message: "Password Do not Match" }) } }
     const result = await User.findOne({ email })
