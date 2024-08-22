@@ -96,6 +96,14 @@ exports.VerifyOTP = asyncHandler(async (req, res) => {
         message: "OTP Verify Success.",
     })
 })
+
+
+
+exports.getAllSeatBookAdmin = asyncHandler(async (req, res) => {
+    const result = await Auth.find()
+    res.json({ message: "All Seat book find...", result })
+})
+
 exports.LogoutAdmin = asyncHandler(async (req, res) => {
     res.clearCookie("admin")
     res.json({ message: "Admin Login Success" })

@@ -4,12 +4,14 @@ const buscontroller = require("../controllers/buscontroller")
 const router = require("express").Router()
 
 router
-    // .get("/seatbook-user", buscontroller.getAllSeatBook)
-    // .post("/allseatBook-user", buscontroller.SeatBook)
-    // .delete("/adminSeat-delete/:id", buscontroller.AdminSeatDelete)
-    // .put("/adminSeat-cancel/:id", buscontroller.SeatBookCancle)
+    //  Admin client
+    .get("/allseatBook-Admin", buscontroller.getAllSeatBookAdminData)
+    .post("/seatBook-admin", buscontroller.SeatBook)
+    .delete("/adminSeat-delete/:id", buscontroller.AdminSeatDelete)
+    .put("/adminSeat-cancel/:id", buscontroller.SeatBookCancle)
 
 
-    .get("/fetch-seat-data", buscontroller.getAllSeatBook)
+    // mobile
+    .get("/fetch-seat-data", buscontroller.getAllSeatBookUserData)
 
 module.exports = router
