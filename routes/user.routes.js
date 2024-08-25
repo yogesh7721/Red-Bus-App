@@ -5,6 +5,7 @@ const router = require("express").Router()
 router
     .post("/register-user", userConroller.RegisterUser)
     .post("/login-user", userConroller.LoginUser)
+    .post("/logout-mobile-user", userConroller.LogoutUser)
 
 // .post("/getBus-user", userConroller.GetBus)
 
