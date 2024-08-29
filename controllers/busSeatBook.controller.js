@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler")
 const BusBookSeat = require("../models/BusBookSeat")
 
 exports.BookSeat = asyncHandler(async (req, res) => {
-    await BusBookSeat.create({ ...req.body, userId: loggedInUser })
+    await BusBookSeat.create({ ...req.body, userId: req.loggedInUser })
     res.json({ message: "Seat Book Success...." })
 })
 exports.GetBookSeat = asyncHandler(async (req, res) => {
