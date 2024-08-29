@@ -12,7 +12,7 @@ exports.userProtected = (req, res, next) => {
             return res.status(401).json({ message: "JWT Error", error: err.message })
         }
         req.loggedInUser = decode.userID
-        console.log(loggedInUser)
+        console.log(req.loggedInUser)
         next()
     })
 }
