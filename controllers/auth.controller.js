@@ -85,7 +85,8 @@ exports.VerifyOTP = asyncHandler(async (req, res) => {
         res.status(401).json({ message: "Invalid OTP" })
     }
     //jWT
-    const Token = JWT.sign({ userID: isFound._id }, process.env.JWT_KEY, { expiresIn: "1d" })
+    const Token = JWT.sign({ userID: isFound._id }, process.env.JWT_KEY, { expiresIn: "180d" })
+
     //Cookie
     res.cookie("admin", Token, {
         maxAge: 86400000,
@@ -96,7 +97,6 @@ exports.VerifyOTP = asyncHandler(async (req, res) => {
         message: "OTP Verify Success.",
     })
 })
-
 
 
 exports.getAllSeatBookAdmin = asyncHandler(async (req, res) => {

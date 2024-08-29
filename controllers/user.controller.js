@@ -3,7 +3,7 @@ const { checkEmpty } = require("../utils/checkEmpty")
 const User = require("../models/User")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
-// const JWT = require("jsonwebtoken")
+const JWT = require("jsonwebtoken")
 const asyncHandler = require("express-async-handler")
 
 
@@ -42,7 +42,7 @@ exports.LoginUser = asyncHandler(async (req, res) => {
         return res.status(401).json({ message: "Password Do not Match" })
     }
     // token 
-    const Token = JWT.sign({ userID: result._id }, process.env.JWT_KEY, { expiresIn: "1d" })
+    const Token = JWT.sign({ userID: result._id }, process.env.JWT_KEY, { expiresIn: "180d" })
     // cookie => user
     res.cookie("user", Token, {
         maxAge: 86400000,
