@@ -72,10 +72,10 @@ exports.LogoutUser = asyncHandler(async (req, res) => {
 })
 
 
-// booking...
+//booking...
 exports.getBookedSeat = asyncHandler(async (req, res) => {
     const user = req.loggedInUser
-    const result = await BusBookSeat.findOne(user)
+    const result = await BusBookSeat.find(user)
     console.log(result)
     res.json({ message: "Seat Fetch Success", result })
 })

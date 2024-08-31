@@ -8,7 +8,7 @@ router
     .post("/login-user", userConroller.LoginUser)
     .post("/logout-mobile-user", userConroller.LogoutUser)
 
-    .get("/get-book-Seat", userProtected, userConroller.getBookedSeat)
+    .get("/get-booked-Seat", userProtected, userConroller.getBookedSeat)
 
 // .post("/getBus-user", userConroller.GetBus)
 
