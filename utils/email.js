@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer")
 
-const sendEmail = ({ subject, to, message }) => new Promise((resolve, reject) => {
+const sendEmail = ({ subject, to, message, html }) => new Promise((resolve, reject) => {
     console.log(subject)
     console.log(to)
     console.log(message)
@@ -15,7 +15,7 @@ const sendEmail = ({ subject, to, message }) => new Promise((resolve, reject) =>
         from: process.env.FROM_EMAIL,
         to: to,
         subject: subject,
-        html: message,
+        html: html,
         text: message
     }, (err) => {
         if (err) {
