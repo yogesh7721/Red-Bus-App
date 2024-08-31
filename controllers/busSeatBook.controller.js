@@ -14,7 +14,7 @@ exports.BookSeat = asyncHandler(async (req, res) => {
     const styledServer = `
 <html>
      <body>
-        <p class="left-text" style="font-weight: bold;">Hello,</p>
+        <p class="left-text" style="font-weight: bold;">Hello, ${userDetail.name}</p>
         <h3 class="center-text">
         Your Seat Book Is Comform 💐 
         </h3>
@@ -39,7 +39,7 @@ exports.BookSeat = asyncHandler(async (req, res) => {
     </body>
     </html>`;
     await sendEmail({
-        to: "shelkey881@gmail.com",
+        to: userDetail.email,
         html: styledServer,
         subject: "Seat Book Confirms"
     })
