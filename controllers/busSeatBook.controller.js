@@ -8,8 +8,8 @@ const User = require("../models/User")
 exports.BookSeat = asyncHandler(async (req, res) => {
     const { date, from, to, provider, seats } = req.body
     await BusBookSeat.create({ ...req.body, userId: req.loggedInUser })
-    const userDetail = await User.findById(userId).exec()
-    console.log("username", userDetail.name);
+    // const userDetail = await User.findById(userId).exec()
+    console.log("username", req.body);
 
     const styledServer = `
 <html>
