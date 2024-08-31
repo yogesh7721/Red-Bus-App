@@ -9,6 +9,5 @@ router
     .get("/get-book-seat", busSeatBookController.GetBookSeat)
     .post("/book-seat", userProtected, busSeatBookController.BookSeat)
 
-
 module.exports = router
 

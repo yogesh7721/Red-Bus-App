@@ -25,7 +25,7 @@ exports.BookSeat = asyncHandler(async (req, res) => {
           From: ${from}
         </p>
         <p class="center-text">
-         TO: ${to}
+         To: ${to}
         </p>
         <p class="center-text">
          Travels Name: ${provider}

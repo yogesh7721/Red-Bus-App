@@ -5,6 +5,7 @@ const validator = require("validator")
 const bcrypt = require("bcryptjs")
 const JWT = require("jsonwebtoken")
 const asyncHandler = require("express-async-handler")
+const BusBookSeat = require("../models/BusBookSeat")
 
 
 
@@ -68,4 +69,13 @@ exports.LoginUser = asyncHandler(async (req, res) => {
 exports.LogoutUser = asyncHandler(async (req, res) => {
     res.clearCookie("user")
     res.json({ message: "User Logout Success" })
+})
+
+
+// booking...
+exports.getBookedSeat = asyncHandler(async (req, res) => {
+    const user = req.loggedInUser
+    const result = await BusBookSeat.findOne(user)
+    console.log(result)
+    res.json({ message: "Seat Fetch Success", result })
 })
