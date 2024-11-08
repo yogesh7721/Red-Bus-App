@@ -13,9 +13,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "dist")))
 app.use(cors(
     {
-        origin:
-            // "https://red-bus-app.onrender.com",
-            "http://localhost:5173",
+        origin: process.env.NODE_ENV === "dev"
+            ? process.env.LOCAL_SERVER
+            : process.env.LIVE_SERVER,
         credentials: true
     }
 ))
@@ -27,8 +27,8 @@ app.use("/api/route", require("./routes/getbus.routes"))
 app.use("/api/seat", require("./routes/busBookSeat"))
 
 app.use("*", (req, res) => {
-    res.status(404).json({ message: "Resource Not Found" })
-    // res.sendFile(path.join(__dirname, "dist", "index.html"))
+    // res.status(404).json({ message: "Resource Not Found" })
+    res.sendFile(path.join(__dirname, "dist", "index.html"))
 })
 app.use((err, req, res, next) => {
     console.log(err)
