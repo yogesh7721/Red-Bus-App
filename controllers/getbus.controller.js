@@ -2,8 +2,9 @@
 const asyncHandler = require("express-async-handler")
 const getBus = require("../models/getBus")
 const { checkEmpty } = require("../utils/checkEmpty")
-const { default: BusSeat } = require("../../mobile/screen/BusSeat")
-// const {  BusSeat } = require("../../mobile/screen/BusSeat")
+const BusSeats = require("../models/BusSeats")
+
+
 
 
 exports.AddRoute = asyncHandler(async (req, res) => {
@@ -17,7 +18,7 @@ exports.AddRoute = asyncHandler(async (req, res) => {
 })
 exports.SearchBusses = asyncHandler(async (req, res) => {
     const { from, to, } = req.body
-    const isfound = await BusSeat.find({ from, to })
+    const isfound = await BusSeats.find({ from, to })
     if (!isfound) {
         return res.status(400).json({ message: "Busses not found..." })
     }

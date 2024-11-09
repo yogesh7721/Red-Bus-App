@@ -2,7 +2,7 @@
 
 const { mongoose } = require("mongoose")
 
-const authSchema = new mongoose.Schema({
+const busSeatSchema = new mongoose.Schema({
 
     date: { type: String, required: true },
     from: { type: String, required: true },
@@ -14,7 +14,7 @@ const authSchema = new mongoose.Schema({
     coDriver: { type: String, required: true },
     image: { type: String, required: true },
 })
-module.exports = mongoose.model("seats", authSchema)
+module.exports = mongoose.model("seats", busSeatSchema)
 
 
 
