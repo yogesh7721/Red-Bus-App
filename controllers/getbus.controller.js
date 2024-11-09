@@ -2,6 +2,7 @@
 const asyncHandler = require("express-async-handler")
 const getBus = require("../models/getBus")
 const { checkEmpty } = require("../utils/checkEmpty")
+// const {  BusSeat } = require("../../mobile/screen/BusSeat")
 
 
 exports.AddRoute = asyncHandler(async (req, res) => {

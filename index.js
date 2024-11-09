@@ -13,9 +13,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "dist")))
 app.use(cors(
     {
-        origin: process.env.NODE_ENV === "dev"
-            ? process.env.LOCAL_SERVER
-            : process.env.LIVE_SERVER,
+        origin: true,
         credentials: true
     }
 ))
