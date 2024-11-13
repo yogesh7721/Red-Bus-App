@@ -9,14 +9,15 @@ const path = require("path")
 const app = express()
 
 app.use(express.json())
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, "dist")))
 app.use(cors(
     {
         origin: true,
         credentials: true
     }
 ))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, "dist")))
+
 
 app.use("/api/auth", require("./routes/auth.routes"))
 app.use("/api/user", require("./routes/user.routes"))
