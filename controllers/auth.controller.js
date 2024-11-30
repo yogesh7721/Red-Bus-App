@@ -78,7 +78,7 @@ exports.VerifyOTP = asyncHandler(async (req, res) => {
         return res.status(401).json({ message: process.env.NODE_ENV === "development" ? "invalid email" : "Invalid Credentials" })
     }
     if (otp !== isFound.otp) {
-        res.status(401).json({ message: "Invalid OTP" })
+        return res.status(401).json({ message: "Invalid OTP" })
     }
     //jWT
     const Token = JWT.sign({ userID: isFound._id }, process.env.JWT_KEY, { expiresIn: "180d" })
